@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:multi_vendor_shop/screens/home/home_screen.dart';
 import 'package:multi_vendor_shop/screens/on_boarding/on_boarding.dart';
 import 'package:multi_vendor_shop/screens/splash_screen.dart';
+
+import 'theme/custom_primary_swatch.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,15 +15,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Multi Vendor Shop',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Swatch.kToDark,
       ),
       initialRoute: SplashScreen.id,
       routes: {
         SplashScreen.id: (context) => SplashScreen(),
         OnBoardingScreen.id: (context) => OnBoardingScreen(),
+        HomeScreen.id : (context) => HomeScreen(),
       },
     );
   }
