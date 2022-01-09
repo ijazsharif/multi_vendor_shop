@@ -26,11 +26,16 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(
-          'Splash Screen',
-          style: Theme.of(context).textTheme.headline1!.copyWith(
-                color: Colors.black,
-              ),
+        child: Container(
+          margin: const EdgeInsets.all(16),
+          child: FittedBox(
+            child: Text(
+              'Splash Screen',
+              style: Theme.of(context).textTheme.headline1!.copyWith(
+                    color: Colors.black,
+                  ),
+            ),
+          ),
         ),
       ),
     );
