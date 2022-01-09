@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:multi_vendor_shop/repository/app_config.dart';
+import 'package:multi_vendor_shop/screens/main/main_screen.dart';
 import 'package:multi_vendor_shop/screens/on_boarding/on_boarding.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -13,12 +15,13 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Timer(
-      const Duration(seconds: 2),
-      () {
-        Navigator.of(context).pushReplacementNamed(OnBoardingScreen.id);
-      },
-    );
+    AppConfig.init().then((value) {
+      Timer(Duration(seconds: 3), () {
+        AppConfig.isOnBoardingWatched!
+            ? Navigator.pushReplacementNamed(context, MainScreen.id)
+            : Navigator.pushReplacementNamed(context, OnBoardingScreen.id);
+      });
+    });
     super.initState();
   }
 

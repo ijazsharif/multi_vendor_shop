@@ -1,6 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:multi_vendor_shop/screens/home/home_screen.dart';
+import 'package:multi_vendor_shop/repository/app_config.dart';
+import 'package:multi_vendor_shop/screens/main/main_screen.dart';
 import 'package:multi_vendor_shop/screens/on_boarding/on_board_page.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -70,20 +71,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 ),
                 scrollPosition != 3
                     ? TextButton(
-                        onPressed: () => Navigator.pushReplacementNamed(
-                          context,
-                          HomeScreen.id,
-                        ),
+                        onPressed: () => goToHomeScreen(context),
                         child: Text(
                           "Skip >>",
                           style: Theme.of(context).textTheme.bodyText1,
                         ),
                       )
                     : ElevatedButton(
-                        onPressed: () => Navigator.pushReplacementNamed(
-                          context,
-                          HomeScreen.id,
-                        ),
+                        onPressed: () => goToHomeScreen(context),
                         child: Text("Start Shopping"),
                       ),
               ],
@@ -91,6 +86,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           ),
         ],
       ),
+    );
+  }
+
+  Future<void> goToHomeScreen(BuildContext context) {
+    AppConfig.onBoardingWatched(true);
+    return Navigator.pushReplacementNamed(
+      context,
+      MainScreen.id,
     );
   }
 }

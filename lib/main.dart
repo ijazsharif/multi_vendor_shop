@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:multi_vendor_shop/screens/home/home_screen.dart';
+import 'package:multi_vendor_shop/screens/main/main_screen.dart';
 import 'package:multi_vendor_shop/screens/on_boarding/on_boarding.dart';
 import 'package:multi_vendor_shop/screens/splash_screen.dart';
 
 import 'theme/custom_primary_swatch.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       routes: {
         SplashScreen.id: (context) => SplashScreen(),
         OnBoardingScreen.id: (context) => OnBoardingScreen(),
-        HomeScreen.id : (context) => HomeScreen(),
+        MainScreen.id : (context) => MainScreen(),
       },
     );
   }
